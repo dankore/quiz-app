@@ -1,5 +1,6 @@
 import "./styles.css";
 
+const section = document.querySelector("section");
 const startButton = document.querySelector("#start-btn");
 const nextButton = document.querySelector("#next-btn");
 const questionContainer = document.querySelector("#question-container");
@@ -40,7 +41,7 @@ function showQuestion(question) {
   });
 }
 function resetState() {
-  clearStatusClass(document.body);
+  clearStatusClass(section);
   nextButton.classList.add("hide");
   while (answerButtonElement.firstChild) {
     answerButtonElement.removeChild(answerButtonElement.firstChild);
@@ -50,7 +51,7 @@ function selectAnswer(e) {
   const selectedButton = e.target;
 
   const correct = selectedButton.dataset.correct;
-  setsStateClass(document.body, correct);
+  setsStateClass(section, correct);
   Array.from(answerButtonElement.children).forEach(button => {
     setsStateClass(button, button.dataset.correct);
   });
